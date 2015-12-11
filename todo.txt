@@ -1,0 +1,3 @@
+Things to Do Later
+  Validate and sanitize inputs
+  Speed up schemJson

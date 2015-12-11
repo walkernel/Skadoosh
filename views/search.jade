@@ -1,0 +1,9 @@
+extends layout
+block content
+  script(src="/js/nm/knockout.js")
+  script(src="/js/search.js")
+  body
+    -window.schem = schem
+    form(action="/search" id="form" method="post")
+      input(type='select' data-bind="options: properties")
+  
