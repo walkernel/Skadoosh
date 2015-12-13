@@ -1,9 +1,12 @@
 extends layout
 block content
-  script(src="/js/nm/knockout.js")
+
+  form(action="/search" id="form" method="post")
+    select.searchProp(data-bind="options: properties, value: property" name = "propertyName")
+    input.searchVal(type="text" list='vals' id="properyValue" name="propertyValue" data-bind="value:valValue, attr: {placeholder: propType}")
+    datalist(id='vals' data-bind="foreach: possibleValues()")
+      option(data-bind="value: $data,text:$data")
+    div(data-bind="foreach:possibleValues()")
+          p titty
   script(src="/js/search.js")
-  body
-    -window.schem = schem
-    form(action="/search" id="form" method="post")
-      input(type='select' data-bind="options: properties")
-  
+  script ko.applyBindings(new AppViewModel("#{schem}","#{values}"));

@@ -1,9 +1,11 @@
-var app = angular.module("skadoosh",[]);
-app.controller("ObjController",['$scope', function($scope){
-  $scope.objName="";
-  
-}]);
+
+
+
+function AppViewModel() {
+  this.objName= ko.observable();
+}
 $('document').ready(function(){
+  ko.applyBindings(new AppViewModel());
   $('.properties').hide();
   $('.nextStep').click(function(){
     $('.properties').show();

@@ -1,14 +1,13 @@
 extends layout
 block content
-  script(src='/js/query.js')
-  body
-    form(method='post' id='newObj' action='/new/object')  
-      each prop in properties
-        label(for=prop.name)=prop.name
-        input(type="text" list=prop.name+'s' id=prop.name name=prop.name)
-        if prop.values[0]!="Unique Value"
-          datalist(id=prop.name+'s')
-            each propVal in prop.values
-              if propVal!= "Shared Value"
-                option(value=propVal)
-      input(type='submit' value='Button')
+  form(method='post' id='newObj' action='/new/object')  
+    each prop in properties
+      label(for=prop.name)=prop.name
+      input(type="text" list=prop.name+'s' id=prop.name name=prop.name)
+      if prop.values[0]!="Unique Value"
+        datalist(id=prop.name+'s')
+          each propVal in prop.values
+            if propVal!= "Shared Value"
+              option(value=propVal)
+    input(type='submit' value='Button')
+    script(src='/js/query.js')

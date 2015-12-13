@@ -1,10 +1,9 @@
 extends layout
 block content
-  body
-    each object in objs
+  each object in objs
 
-      h1=object.identifier
-      each property in object.properties
-        p.objPropName #{property.propertyName} is #{property.value}
-        br
+    h1=object.identifier
+    each property in object.properties
+      p.objPropName #{property.propertyName} is #{property.value}
       br
+    br
