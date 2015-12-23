@@ -35,7 +35,7 @@ describe('Accounts', function() {
   it('should create a new object on /new/object POST',function(done){
     agent
       .post('/new/object')
-      .send({"customPropertyOneUnique":6107932623,"customPropertyTwoShared":"Fios","customPropertyThreeShared":"60$","customPropertyFourUnique":"Walker"})
+      .send({"Phone Number":6107932623,"Service Provider":"Fios","Plan Cost":"60$","Owner's Name":"Walker"})
       .end(function(err, res){
         expect(res.status).to.equal(200);
         done();
@@ -44,7 +44,7 @@ describe('Accounts', function() {
   it('should add another object on a second /new/object POST',function(done){
     agent
       .post('/new/object')
-      .send({"customPropertyOneUnique":6107932623,"customPropertyTwoShared":"AT&T","customPropertyThreeShared":"90$","customPropertyFourUnique":"Runner"})
+      .send({"Phone Number":1234567890,"Service Provider":"AT&T","Plan Cost":"60$","Owner's Name":"Runner"})
       .end(function(err, res){
         expect(res.status).to.equal(200);
         done();
@@ -58,5 +58,5 @@ describe('Accounts', function() {
         done();
       });
     });
-  
+
 });

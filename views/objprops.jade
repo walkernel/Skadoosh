@@ -1,18 +1,18 @@
 extends layout
 block content
-  form( id="addProperties" method="post" action= "/new/schem" role="form")
-    p.objText Let's start out by adding an object that you want to track.
-    |Enter Here:
-    input.objName(type="text" name = "objName" data-bind="value:objName")
-    button.nextStep(type="button") Next
-    div.properties
-      div.property
+  .container
+    form(id="addProperties" method="post" action= "/new/schem" role="form")
+      h3.objText Let's start out by adding an object that you want to track.
+      |Enter Here:
+      input.input.input-lg.objName(type="text" name = "objName" data-bind="value:objName")
+      button.btn.btn-lg.btn-primary.nextStep(type="button") Next
+      div.properties
         p.objText What is a property of a(n) 
           span(data-bind="text:objName")
           abbr(title="For example, a property of a Phone would be its Phone Number")
             sup ?
         label.objText Property Name:
-          input(type = "text" name="property1")
+          input.input.input-lg(type = "text" name="property1")
         p.objText
           |Are the possible values of this property unique
           abbr(title="A unique value is a value that changes for each object. A phone's number changes for each phone, so the number property would be unique.")
@@ -20,9 +20,10 @@ block content
           |or shared
           abbr(title="A shared value would be a value that is shared by some objects.")
             sup ?
-        select(form="addProperties" name="typeOfProperty1")
+        select.input-lg.objName(form="addProperties" name="typeOfProperty1")
           option(value="unique") Unique
           option(value='shared') Shared
-      button.addPropButton(type="button") Add Property
-      button.final(type="submit") Submit
+        div.property
+        button.btn.btn-lg.addPropButton(type="button") Add Property
+        button.btn.btn-lg.final(type="submit") Submit
   script(src='/js/prop.js')    

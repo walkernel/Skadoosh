@@ -11,6 +11,17 @@ function AppViewModel(schem, values) {
     self.valValue("");
     return temp ? temp[0] !== "Unique Value" ? temp.slice(1) : [] : []
   })
-  console.log(this.possibleValues())
+  self.objs = ko.observableArray();
+  self.getData = function(){
+    $.post("/search", $('#form').serialize(), function(returnedData) {
+      self.objs(returnedData);
+    });
+  };
+
+  self.getDataFromClick= function(val, name){
+    self.property(name);
+    self.valValue(val);
+    self.getData();
+  };
 
 }

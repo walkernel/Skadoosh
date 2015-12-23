@@ -1,0 +1,10 @@
+db.accounts.aggregate([ {$match:{username:"six"}},
+ {$project:{"objects":1,_id:0}},
+  {$unwind:"$objects"},
+  {$match:{"objects.properties":{
+    $elemMatch:{
+    value:"60$",
+    propertyName:"Plan Cost"
+    }
+  }}
+} ]).pretty()

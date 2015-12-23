@@ -66,12 +66,12 @@ router.post('/object', function(req, res) {
 
     console.log(data.schemJson);
 
-    var fullobj = {};
-    fullobj.identifier = objProps.splice(0, 1)[0].value;
-    fullobj.properties = objProps;
-    var allObj = data.objects.concat(fullobj);
+
+    var iden = objProps.splice(0, 1)[0].value;
+
+    var fullobj = data.objects.concat({identifier:iden,properties:objProps})
     data.update({
-      objects: allObj,
+      objects: fullobj,
       schemJson: schemTemp
     }, function(err) {
       if (err) throw err;

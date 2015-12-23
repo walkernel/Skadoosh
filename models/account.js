@@ -16,7 +16,7 @@ var Account = new Schema({
       name:String,
       values:[String]
     }],
-    objects:[CustomObject]
+    objects: [CustomObject]
 });
 
 Account.plugin(passportLocalMongoose);

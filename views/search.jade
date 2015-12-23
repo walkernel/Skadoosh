@@ -1,12 +1,19 @@
 extends layout
 block content
-
-  form(action="/search" id="form" method="post")
-    select.searchProp(data-bind="options: properties, value: property" name = "propertyName")
-    input.searchVal(type="text" list='vals' id="properyValue" name="propertyValue" data-bind="value:valValue, attr: {placeholder: propType}")
+  form.container.searchCont(data-bind="submit: getData" id="form" method="post")
+    h3.searchText I am looking for an object with the
+    select.input-lg.searchProp(data-bind="options: properties, value: property" id = "prnm" name = "propertyName")
+    h3.searchText of
+    input.input-lg.searchVal(type="text" list='vals' id="prvl" name="propertyValue" data-bind="value:valValue, attr: {placeholder: propType}")
+    input.btn-default.btn-lg.search(type="submit" name="search")
     datalist(id='vals' data-bind="foreach: possibleValues()")
-      option(data-bind="value: $data,text:$data")
-    div(data-bind="foreach:possibleValues()")
-          p titty
+      option(data-bind="value: $data, text:$data")
+  .container
+    div.container.allitems(data-bind="foreach:objs")
+      .well.unique
+        h1.identifier(data-bind="text: $data.objects.identifier")
+        div.properties(data-bind="foreach:$data.objects.properties")
+          h4.propertyName(data-bind="text:propertyName")
+          a.propVal(data-bind="text: value, click:function(){$root.getDataFromClick(value,propertyName)}")
   script(src="/js/search.js")
   script ko.applyBindings(new AppViewModel("#{schem}","#{values}"));
